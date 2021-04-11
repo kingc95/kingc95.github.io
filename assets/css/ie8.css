@@ -1,0 +1,84 @@
+/*
+	Magnetic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Basic */
+
+	body {
+		background-image: url("../../images/bg.jpg");
+		background-size: cover;
+		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+	}
+
+/* Button */
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
+	.button {
+		border: solid 1px #ffffff !important;
+	}
+
+		input[type="submit"].special,
+		input[type="reset"].special,
+		input[type="button"].special,
+		button.special,
+		.button.special {
+			border: 0 !important;
+		}
+
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="tel"],
+	select {
+		line-height: 3.25em;
+	}
+
+/* Banner */
+
+	#banner {
+		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+	}
+
+		#banner:before {
+			display: none;
+		}
+
+		#banner footer {
+			border-top: solid 1px #ffffff;
+		}
+
+			#banner footer .actions {
+				margin-bottom: 0;
+			}
+
+/* Footer */
+
+	#footer {
+		background: #32383f;
+	}
+
+/* Menu */
+
+	#menu {
+		background: #6093c4;
+	}
+
+		#menu:before {
+			content: '\00d7';
+			cursor: pointer;
+			font-size: 3em;
+			width: 2em;
+			height: 2em;
+			line-height: 2em;
+		}
+
+		#menu .inner {
+			background: #32383f;
+		}

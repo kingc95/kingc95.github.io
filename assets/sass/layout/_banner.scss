@@ -1,0 +1,159 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Magnetic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Banner */
+
+	#banner {
+		position: relative;
+		background-image: url('../../images/banner.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+
+		header {
+			@include vendor('display', 'flex');
+			@include vendor('align-items', 'center');
+			@include vendor('justify-content', 'center');
+			@include vendor('flex-direction', 'column');
+			@include vendor('flex-wrap', 'wrap');
+			@include vendor('filter', 'blur(0)');
+			@include vendor('transform', 'scale(1)');
+			@include vendor('transition', (
+				'opacity 1s ease',
+				'filter 1s ease',
+				'transform 0.5s ease'
+			));
+			@include padding(4em, 4em, (1em, 0, 0, 0));
+			position: relative;
+			height: 32em;
+			opacity: 1;
+			z-index: 1;
+
+			h2 {
+				font-size: 1.85em;
+
+				&:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
+			p {
+				margin-top: 0;
+				width: 100%;
+			}
+		}
+
+		&:before {
+			@include vendor('transition', 'opacity 2s ease-in-out');
+			@include vendor('transition-delay', '0.75s');
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #323a47;
+			opacity: 0.65;
+		}
+
+		footer {
+			@include vendor('filter', 'blur(0)');
+			@include vendor('transition', (
+				'opacity 1s ease',
+				'filter 1s ease',
+				'transform 0.5s ease'
+			));
+			@include vendor('transition-delay', '0s');
+			padding: 2em 3em;
+			position: relative;
+			background-color: rgba(255,255,255,0.05);
+			opacity: 1;
+			z-index: 1;
+
+			> :last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		body.is-loading & {
+			header {
+				@include vendor('filter', 'blur(1px)');
+				@include vendor('transform', 'scale(0.985)');
+				opacity: 0;
+			}
+
+			&:before {
+				opacity: 1;
+			}
+
+			footer {
+				@include vendor('filter', 'blur(1px)');
+				opacity: 0;
+			}
+		}
+
+		@include breakpoint(large) {
+			header {
+				@include padding(3em, 3em, (0.5em, 0, 0, 0));
+				height: 28em;
+
+				h2 {
+					font-size: 1.65em;
+				}
+			}
+
+			footer {
+				padding: 1.5em 2em;
+			}
+		}
+
+		@include breakpoint(medium) {
+			header {
+				height: 34em;
+			}
+		}
+
+		@include breakpoint(small) {
+			padding: 4.5em 3em 4em 3em;
+
+			header {
+				height: auto;
+				padding: 0;
+
+				h2 {
+					font-size: 1.25em;
+				}
+
+				p {
+					font-size: 0.8em;
+				}
+			}
+
+			footer {
+				@include vendor('transform', 'scale(1)');
+				position: relative;
+				background: transparent;
+				margin: (_size(element-margin) * 0.25) 0 0 0;
+				padding: 0;
+			}
+
+			body.is-loading & {
+				footer {
+					@include vendor('transform', 'scale(0.985)');
+				}
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			padding: 6.5em 3em 6em 3em;
+		}
+	}

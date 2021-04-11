@@ -1,0 +1,100 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Magnetic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Section/Article */
+
+	section, article {
+		&.special {
+			text-align: center;
+		}
+	}
+
+	header {
+		p {
+			color: _palette(fg-light);
+			font-size: 0.9em;
+			letter-spacing: _size(letter-spacing);
+			line-height: 2.25;
+			margin-top: -0.75em;
+			position: relative;
+			text-transform: uppercase;
+		}
+
+		h3 + p {
+			font-size: 0.8em;
+		}
+
+		h4 + p {
+			font-size: 0.75em;
+		}
+
+		h5 + p {
+			font-size: 0.75em;
+		}
+
+		h6 + p {
+			font-size: 0.75em;
+		}
+
+		&.major {
+			@include padding(6.5em, 3em);
+			text-align: center;
+			background-color: _palette(accent1);
+			@include vendor('background-image', (
+				'url("images/overlay.png")',
+				'url("images/header-bg.svg")',
+				'linear-gradient(45deg, #{_palette(accent1)} 20%, #{_palette(accent2)} 80%)'
+			));
+			background-size: 100px 100px, cover, cover;
+			background-position: center, center, center;
+
+			h2 {
+				&:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
+			p {
+				margin-top: 0;
+				margin-bottom: _size(element-margin);
+			}
+		}
+
+		@include breakpoint(large) {
+			p {
+				line-height: 2;
+			}
+
+			&.major {
+				@include padding(5em, 3em);
+			}
+		}
+
+		@include breakpoint(medium) {
+			p {
+				br {
+					display: none;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			p {
+				font-size: 0.8em;
+				line-height: 1.75;
+			}
+
+			&.major {
+				@include padding(4em, 1.5em);
+				background-size: 100px 100px, 250%, cover;
+			}
+		}
+	}

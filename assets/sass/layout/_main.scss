@@ -1,0 +1,215 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Magnetic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Main */
+
+	#main {
+		width: _size(inner);
+		margin: 0 auto;
+		padding-top: 6em;
+
+		> * {
+			margin-bottom: 6em;
+		}
+
+		.default {
+			background-color: _palette(bg);
+
+			.content {
+				@include padding(4em, 4em);
+			}
+		}
+
+		.features {
+			background-color: _palette(bg);
+
+			.content {
+				@include vendor('display', 'flex');
+				@include vendor('flex-wrap', 'wrap');
+
+				.feature {
+					@include padding(4em, 3em);
+					width: 33.333333333%;
+					border-style: solid;
+					border-color: _palette(border);
+					border-left-width: 1px;
+					border-top-width: 1px;
+
+					&:nth-child(-n + 3) {
+						border-top-width: 0;
+					}
+
+					&:nth-child(3n - 2) {
+						border-left-width: 0;
+					}
+				}
+			}
+		}
+
+		.spotlight {
+			@include vendor('display', 'flex');
+			@include vendor('align-items', 'center');
+			background-color: _palette(bg);
+
+			.image {
+				width: 33.333333333%;
+
+				img {
+					width: 100%;
+				}
+			}
+
+			.content {
+				@include padding(4em, 4em);
+				width: 66.666666666%;
+			}
+
+			&.alt {
+				@include vendor('flex-direction', 'row-reverse');
+			}
+		}
+
+		.cta {
+			text-align: center;
+
+			h2 {
+				&:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
+			p {
+				margin-top: 0;
+			}
+		}
+
+		@include breakpoint(xlarge) {
+			padding-top: 4.5em;
+
+			> * {
+				margin-bottom: 4.5em;
+			}
+		}
+
+		@include breakpoint(large) {
+			width: calc(100% - 6em);
+			padding-top: 3em;
+
+			> * {
+				margin-bottom: 3em;
+			}
+
+			.default {
+				.content {
+					@include padding(3em, 3em);
+				}
+			}
+
+			.features {
+				.content {
+					.feature {
+						@include padding(3em, 2em);
+					}
+				}
+			}
+
+			.spotlight {
+				.content {
+					@include padding(3em, 3em);
+				}
+			}
+
+			.cta {
+				@include padding(1em, 0);
+			}
+		}
+
+		@include breakpoint(medium) {
+			.features {
+				.content {
+					display: block;
+
+					.feature {
+						width: 100%;
+						border-left: 0;
+						border-top: solid 1px _palette(border) !important;
+
+						&:first-child {
+							border-top: 0 !important;
+						}
+					}
+				}
+			}
+
+			.spotlight {
+				display: block;
+
+				.image {
+					width: 100%;
+					overflow: hidden;
+
+					img {
+						margin-top: -8em;
+					}
+				}
+
+				.content {
+					width: 100%;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			width: 100%;
+			padding-top: 0;
+
+			> * {
+				margin-bottom: 0;
+			}
+
+			.default {
+				.content {
+					@include padding(3em, 1.5em);
+				}
+			}
+
+			.features {
+				.content {
+					.feature {
+						@include padding(3em, 1.5em);
+					}
+				}
+			}
+
+			.spotlight {
+				.content {
+					@include padding(3em, 1.5em);
+
+					h2 {
+						&:after {
+							margin-left: 0;
+							margin-right: 0;
+						}
+					}
+				}
+			}
+
+			.cta {
+				@include padding(4em, 1.5em);
+				background-color:		_palette(bg-alt);
+				background-image:		url('images/overlay.png'),	url('images/bg.jpg');
+				background-size:		100px 100px,				cover;
+				background-repeat:		repeat,						no-repeat;
+				background-attachment:	scroll,						scroll;
+				background-position:	top left,					center bottom;
+			}
+		}
+	}

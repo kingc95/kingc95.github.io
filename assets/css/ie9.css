@@ -1,0 +1,73 @@
+/*
+	Magnetic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+/* Banner */
+
+	#banner header {
+		padding: 11em 4em 8em 4em ;
+		height: auto !important;
+	}
+
+	@media screen and (max-width: 1280px) {
+
+		#banner header {
+			padding: 9em 3em 6em 3em ;
+		}
+
+	}
+
+/* Main */
+
+	#main .features .content:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	#main .features .content > * {
+		float: left;
+	}
+
+	#main .spotlight:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	#main .spotlight > * {
+		float: left;
+	}
+
+/* Footer */
+
+	#footer .inner:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	#footer .inner > * {
+		float: left;
+	}
+
+/* Menu */
+
+	#menu {
+		background: rgba(96, 147, 196, 0.9);
+		text-align: center;
+	}
+
+		#menu:after {
+			content: '';
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		#menu .inner {
+			display: inline-block;
+			vertical-align: middle;
+		}

@@ -1,0 +1,95 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+
+/*
+	Magnetic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+*/
+
+	@include skel-breakpoints((
+		xlarge: '(max-width: 1680px)',
+		large: '(max-width: 1280px)'
+	));
+
+/* Banner */
+
+	#banner {
+		header {
+			@include padding(10em, 4em, (1em, 0, 0, 0));
+			height: auto !important;
+		}
+
+		@include breakpoint(large) {
+			header {
+				@include padding(8em, 3em, (1em, 0, 0, 0));
+			}
+		}
+	}
+
+/* Main */
+
+	#main {
+		.features {
+			.content {
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
+				}
+
+				> * {
+					float: left;
+				}
+			}
+		}
+
+		.spotlight {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			> * {
+				float: left;
+			}
+		}
+	}
+
+/* Footer */
+
+	#footer {
+		.inner {
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			> * {
+				float: left;
+			}
+		}
+	}
+
+/* Menu */
+
+	#menu {
+		background: transparentize(_palette(accent2), 0.1);
+		text-align: center;
+
+		&:after {
+			content: '';
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		.inner {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}

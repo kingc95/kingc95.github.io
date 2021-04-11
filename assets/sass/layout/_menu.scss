@@ -1,0 +1,185 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Magnetic by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Menu */
+
+	#page-wrapper {
+		@include vendor('transition', 'filter 0s ease');
+	}
+
+	#menu {
+		@include vendor('display', 'flex');
+		@include vendor('flex-direction', 'column');
+		@include vendor('justify-content', 'center');
+		@include vendor('align-items', 'center');
+		@include vendor('pointer-events', 'none');
+		@include vendor('transition', (
+			'opacity 0.25s ease-out',
+			'visibility 0.25s'
+		));
+		@include vendor('background-image', (
+			'url("images/overlay.png")',
+			'url("images/menu-bg.svg")',
+			'linear-gradient(45deg, #{transparentize(_palette(accent1), 0.25)} 20%, #{transparentize(_palette(accent2), 0.015)} 80%)'
+		));
+		background-size: 100px 100px, cover, cover;
+		background-position: center, center, center;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		visibility: hidden;
+		z-index: _misc(z-index-base);
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 6em;
+			height: 6em;
+			line-height: 6em;
+			background-image: url('images/close.svg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 3.5em 3.5em;
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.inner {
+			@include padding(3.5em, 2.5em);
+			@include vendor('transform', 'perspective(500px) rotateX(-20deg)');
+			@include vendor('transition', (
+				'opacity 0.5s ease-out',
+				'transform 0.5s ease-out'
+			));
+			@include vendor('transition-delay', '0.5s');
+			-webkit-overflow-scrolling: touch;
+			width: 23em;
+			background: transparentize(_palette(bg), 0.1);
+			opacity: 0;
+			overflow-x: hidden;
+			overflow-y: auto;
+			text-align: center;
+
+			h2 {
+				margin-bottom: _size(element-margin) * 0.5;
+
+				&:after {
+					display: none;
+				}
+			}
+
+			ul {
+				&.links {
+					list-style: none;
+					padding: 0;
+
+					li {
+						border-top: solid 1px _palette(border);
+						padding: 0;
+
+						a {
+							display: block;
+							padding: 1em 0;
+							border: 0;
+							font-size: 0.9em;
+							text-transform: uppercase;
+							letter-spacing: _size(letter-spacing);
+						}
+
+						&:first-child {
+							border-top: 0;
+						}
+					}
+
+					& + ul {
+						margin-top: (_size(element-margin) * -0.5);
+					}
+				}
+
+				&.actions {
+					li {
+						a {
+							font-size: 0.9em !important;
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint(large) {
+			.inner {
+				@include padding(2.5em, 2em);
+				width: 21em;
+			}
+		}
+
+		@include breakpoint(small) {
+			background-size: 100px 100px, 450%, cover;
+
+			&:before {
+				width: 2.5em;
+				height: 2.5em;
+				line-height: 2.5em;
+				background-size: 2em 2em;
+			}
+
+			.inner {
+				ul {
+					&.links {
+						li {
+							a {
+								font-size: 0.8em;
+							}
+						}
+					}
+
+					&.actions {
+						li {
+							a {
+								font-size: 0.8em !important;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			.inner {
+				width: calc(100% - 4em);
+				margin: 2.5em 0;
+			}
+		}
+	}
+
+	body.is-menu-visible {
+		#page-wrapper {
+			@include vendor('filter', 'blur(8px)');
+			@include vendor('transition', 'filter 0.25s ease');
+		}
+
+		#menu {
+			@include vendor('pointer-events', 'auto');
+			opacity: 1;
+			visibility: visible;
+
+			.inner {
+				@include vendor('transform', 'rotateX(0)');
+				@include vendor('transition-delay', '0.125s');
+				opacity: 1;
+			}
+		}
+	}
